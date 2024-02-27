@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AWS F1 Garage | Pit Stop Challenge</title>
+        <link rel="stylesheet" href="styles/style.css">
+    </head>
+    <body>
+        <header>
+            <img src="assets/imgs/f1-logo.png" alt="F1 Logo">
+            <div id="logo-seperator"></div>
+            <img src="assets/imgs/aws-logo.png" alt="AWS Logo">
+        </header>
+        <section id="start-section">
+            <div class="inner-container">
+                <h1>Pit Stop Challenge</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis accumsan semper nulla, efficitur malesuada sapien. Morbi vel faucibus felis. Quisque diam quam, condimentum id eros eu, ultrices venenatis nibh.</p>
+                <a class="anchor-button" aria-label="start game" onclick="startGame()" href="#video-section">Start</a>
+            </div>
+        </section>
+        <section id="video-section">
+            <div>
+                <video id="game-video" src="assets/videos/Cold-Bg.webm"></video>
+            </div>
+        </section>
+        <section id="tyre-selection-section">
+            <div class="inner-container">
+                <h2>Tyre Selection</h2>
+                <div id="scenario-row">
+                    <div class="scenario-condition-wrapper" id="lap-number-condition">
+                        <div class="scenario-condition-value-wrapper">
+                            <p class="scenario-condition-value">N/A</p>
+                        </div>
+                        <p class="scenario-condition-description">Lap Number</p>
+                    </div>
+                    <div class="scenario-condition-wrapper" id="current-tyres-condition">
+                        <div class="scenario-condition-value-wrapper">
+                            <p class="scenario-condition-value">N/A</p>
+                        </div>
+                        <p class="scenario-condition-description">Current Tyres</p>
+                    </div>
+                    <div class="scenario-condition-wrapper" id="weather-condition">
+                        <div class="scenario-condition-value-wrapper">
+                            <p class="scenario-condition-value">N/A</p>
+                        </div>
+                        <p class="scenario-condition-description">Weather</p>
+                    </div>
+                    <div class="scenario-condition-wrapper" id="tyre-life-condition">
+                        <div class="scenario-condition-value-wrapper">
+                            <p class="scenario-condition-value">N/A</p>
+                        </div>
+                        <p class="scenario-condition-description">Tyre Life</p>
+                    </div>
+                </div>
+                <div id="tyre-selction-row">
+                    <button aria-label="Tyre Option 1" id="tyre-option1">Option 1</button>
+                    <button aria-label="Tyre Option 2" id="tyre-option2">Option 2</button>
+                    <button aria-label="Tyre Option 3" id="tyre-option3">Option 3</button>
+                </div>
+            </div>
+        </section>
+        <section id="time-section">
+            <div class="inner-container">
+                <h2>Time</h2>
+                <p id="game-timer">00:00:000</p>
+                <button aria-label="start timer" class="start-timer">Start</button>
+            </div>
+        </section>
+        <section id="summary-section">
+
+        </section>
+    </body>
+    <footer><script src="js/functions.js"></script></footer>
+</html>

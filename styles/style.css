@@ -1,0 +1,233 @@
+html {
+    scroll-snap-type: y mandatory;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/**
+* Resets
+**/
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin-top: 0;
+    margin-bottom: 1em;
+}
+
+h1,
+h2,
+h3 {
+    text-wrap: balance;
+}
+
+/**
+* Colors
+**/
+
+:root {
+    --dark: #0E0E11;
+    --blue: #1A2B3C;
+    --dark-blue: #0C1829;
+    --light: #FFFFFF;
+    --grey: #37373A;
+    --accent: #F6AF00;
+    --accent-2:  #85C441;
+}
+
+/**
+* Typography Styling
+**/
+
+:root {
+    --huge-font-size: clamp(1.802rem, 0.5217rem + 4.097vw, 4.209rem);
+    --xxlarge-font-size: clamp(1.602rem, 0.7749rem + 2.6468vw, 3.157rem);
+    --xlarge-font-size: clamp(1.424rem, 0.923rem + 1.6032vw, 2.3659rem);
+    --large-font-size: clamp(1.266rem, 0.9942rem + 0.8698vw, 1.777rem);
+    --medium-font-size: clamp(1.125rem, 1.0144rem + 0.354vw, 1.333rem);
+    --normal-font-size: clamp(0.889rem, 0.83rem + 0.1889vw, 1rem);
+    --small-font-size: clamp(0.702rem, 0.6765rem + 0.0817vw, 0.75rem);
+    --xsmall-font-size: 0.563rem;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+
+body {
+    font-family: "Source Sans 3", sans-serif;
+    font-weight: 400;
+    color: var(--light);
+}
+
+h1 {
+    font-size: var(--huge-font-size);
+    font-weight: 600;
+}
+
+h2 {
+    font-size: var(--xxlarge-font-size);
+    font-weight: 600;
+}
+
+h3 {
+    font-size: var(--large-font-size);
+    font-weight: 600;
+}
+
+h4 {
+    font-size: var(--large-font-size);
+    font-weight: 600;
+}
+
+h5 {
+    font-size: var(--medium-font-size);
+    font-weight: 600;
+}
+
+h6 {
+    font-size: var(--normal-font-size);
+    font-weight: 600;
+}
+
+p {
+    font-size: var(--normal-font-size);
+    font-weight: 400;
+}
+
+/**
+* Buttons
+**/
+
+.anchor-button {
+    display: block;
+    text-decoration: none;
+}
+
+button,
+.anchor-button {
+    font-size: var(--medium-font-size);
+    color: var(--light);
+    border: none;
+    padding: 0.5em 1.5em;
+    background-color: var(--accent-2);
+    cursor: pointer;
+}
+
+
+
+/**
+* Section Styling
+**/
+
+header {
+    position: fixed;
+    display: flex;
+    flex-flow: row;
+    gap: 2rem;
+    padding: 1.5rem 2rem;
+}
+
+header img {
+    height: 50px;
+    width: auto;
+}
+
+#logo-seperator {
+    height: 50px;
+    border: 1px solid var(--light);
+}
+
+section {
+    height: 100svh;
+    width: 100%;
+    margin: 0 auto;
+    aspect-ratio: 16/9;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    background-image: url(../assets/imgs/section-bg.png);
+    background-position: bottom center;
+}
+
+section h1,
+section h2,
+section p {
+    text-align: center;
+}
+
+.inner-container {
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem;
+    margin: auto;
+}
+
+/**
+* Section Specific Styling
+**/ 
+
+/** Start **/
+#start-section p {
+    max-width: 600px;
+}
+
+/** Video **/
+#video-section {
+    position: relative;
+    z-index: 100;
+}
+#video-section video {
+    height: 100svh;
+    width: 100%;
+    aspect-ratio: 16/9;
+}
+
+/** Tyre Selection **/
+
+#scenario-row {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 5rem;
+}
+
+.scenario-condition-wrapper {
+    display: flex;
+    flex-flow: column;
+    gap: 2rem;
+    margin: 5rem 0;
+}
+
+.scenario-condition-value-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+    width: 150px;
+    border: 2px solid var(--accent-2);
+    border-radius: 999px;
+}
+.scenario-condition-value-wrapper p {
+    font-size: var(--medium-font-size);
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+/** Time Section **/
+
+#game-timer {
+    font-size: var(--huge-font-size);
+    font-weight: 600;
+}
