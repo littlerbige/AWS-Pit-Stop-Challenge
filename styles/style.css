@@ -230,4 +230,31 @@ section p {
 #game-timer {
     font-size: var(--huge-font-size);
     font-weight: 600;
+    margin: 5rem 0;
+}
+
+/** Summary Section **/
+
+#summary-section h3 {
+    font-size: var(--medium-font-size);
+    font-weight: 400;
+}
+#summary-section p {
+    font-size: var(--huge-font-size);
+    font-weight: 600;
+}
+
+#summary-section p,
+#summary-section h3 {
+    text-align: center;
+}
+
+.results-row {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 5rem 0;
+    width: 100%;
 }
