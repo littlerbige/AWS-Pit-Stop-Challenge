@@ -95,7 +95,6 @@ function startGame(){
 
 const video = document.getElementById("game-video");
 const options = {
-    // root: document.getElementById("video-section"),
     rootMargin: "0px",
     threshold: 1.0,
 };
