@@ -124,6 +124,12 @@ button,
     cursor: pointer;
 }
 
+/**
+* Elements
+**/
+.hidden {
+    display: none;
+}
 
 
 /**

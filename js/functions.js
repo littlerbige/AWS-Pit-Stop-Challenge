@@ -5,7 +5,7 @@ class scenario {
         this._weather = weather;
         this._tyreLife = tyreLife;
         this._correctTyre = correctTyre;
-        this.__superBadTyre = superBadTyre;
+        this._superBadTyre = superBadTyre;
     }
 
     get lapNum() {
@@ -93,24 +93,83 @@ function startGame(){
    //move to video section
 }
 
-const video = document.getElementById("game-video");
-const options = {
-    rootMargin: "0px",
-    threshold: 1.0,
-};
-const callback = (entries) => {
-    const videoEntry = entries[0];
-    if(!videoEntry.isIntersecting) {
-        let videoPromise = videoEntry.target.pause();
-        if(videoPromise !== undefined) {
-            videoEntry.target.pause();
+function playVideo(){
+    const video = document.getElementById("game-video");
+    const options = {
+        rootMargin: "0px",
+        threshold: 1.0,
+    };
+    const callback = (entries) => {
+        const videoEntry = entries[0];
+        if(!videoEntry.isIntersecting) {
+            let videoPromise = videoEntry.target.pause();
+            if(videoPromise !== undefined) {
+                videoEntry.target.pause();
+            }
+        } else {
+            videoEntry.target.play();
         }
-    } else {
-        videoEntry.target.play();
     }
+    
+    const observer = new IntersectionObserver(callback, options);
+    
+    observer.observe(video);
 }
 
-const observer = new IntersectionObserver(callback, options);
+playVideo();
 
-observer.observe(video);
+let startTime;
+let timerInterval;
+let finalTimeMs;
+
+function startTimer(){
+    if(!timerInterval) {
+        startTime = new Date().getTime();
+        timerInterval = setInterval(updateTimer, 100);
+    }
+    document.getElementById("start-timer-btn").classList.add('hidden');
+    document.getElementById("start-timer-btn").classList.remove('active');
+    document.getElementById("stop-timer-btn").classList.remove('hidden');
+}
+
+function stopTimer(){
+    finalTime = document.getElementById("game-timer").innerHTML;
+    clearInterval(timerInterval);
+    timerInterval = null;
+
+    document.getElementById("stop-timer-btn").classList.remove('active');
+    document.getElementById("stop-timer-btn").classList.add('hidden');
+    document.getElementById("finish-timer-btn").classList.remove('hidden');
+}
+
+function updateTimer(){
+    let currentTime = new Date().getTime();
+    let elapsedTime = currentTime - startTime;
+
+    document.getElementById("game-timer").innerHTML = msToDisplayTime(elapsedTime);
+    document.getElementById("pit-time").children[1].innerHTML = msToDisplayTime(elapsedTime);
+    finalTimeMs = elapsedTime;
+}
+
+function msToDisplayTime(msTime){
+    let milliseconds = Math.floor(msTime % 1000);
+    let seconds = Math.floor(msTime / 1000) % 60;
+    let minutes = Math.floor(msTime / 1000 / 60) % 60;
+
+    return pad(minutes) + ":" + pad(seconds) + ":" + padMs(milliseconds);
+}
+
+function pad(number){
+    return (number < 10 ? "0" : "") + number
+}
+
+function padMs(number){
+    if(number < 10 ){
+        return "00" + number;
+    } else if(number < 100) {
+        return "0" + number;
+    } else {
+        return number;
+    }
+}
 
