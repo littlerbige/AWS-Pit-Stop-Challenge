@@ -64,7 +64,9 @@
             <div class="inner-container">
                 <h2>Time</h2>
                 <p id="game-timer">00:00:000</p>
-                <button aria-label="start timer" class="start-timer">Start</button>
+                <button aria-label="start timer" id="start-timer-btn" class="active" onclick="startTimer()">Start</button>
+                <button aria-label="stop timer" id="stop-timer-btn" class="hidden" onclick="stopTimer()">Stop</button>
+                <a class="anchor-button hidden"  id="finish-timer-btn" href="#summary-section">Finish</a>
             </div>
         </section>
         <section id="summary-section">
