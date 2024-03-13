@@ -33,11 +33,11 @@ class scenario {
     }
 }
 
-const scenario1 = new scenario(2, "dry", "rainy", "38%", "wet", "dry");
-const scenario2 = new scenario(22, "wet", "hot", "77%", "dry", "wet");
-const scenario3 = new scenario(15, "cold", "hot", "20%", "dry", "wet");
-const scenario4 = new scenario(17, "hot", "dry", "55%", "dry", "dry");
-const scenario5 = new scenario(40, "dry", "windy", "11%", "wet", "wet");
+const scenario1 = new scenario(70, "S", "Moderate Rain", "38%", "wet", "dry");
+const scenario2 = new scenario(20, "M", "dry", "77%", "dry", "wet");
+const scenario3 = new scenario(65, "I", "dry", "20%", "dry", "wet");
+const scenario4 = new scenario(44, "H", "dry", "55%", "dry", "dry");
+const scenario5 = new scenario(37, "W", "Heavy Rain", "11%", "wet", "wet");
 
 const scenarioList = [scenario1, scenario2, scenario3, scenario4, scenario5];
 
