@@ -1,50 +1,29 @@
-class scenario {
-    constructor(lapNum, currTyres, weather, tyreLife, correctTyre, superBadTyre) {
-        this._lapNum = lapNum;
-        this._currTyres = currTyres;
-        this._weather = weather;
-        this._tyreLife = tyreLife;
-        this._correctTyre = correctTyre;
-        this._superBadTyre = superBadTyre;
-    }
+import scenario from "./modules/scenario.js";
+import tyre from "./modules/tyres.js";
 
-    get lapNum() {
-        return this._lapNum;
-    }
+document.getElementById("start-game-btn").addEventListener("click", startGame);
+document.getElementById("start-timer-btn").addEventListener("click", startTimer);
+document.getElementById("stop-timer-btn").addEventListener("click", stopTimer);
+document.getElementById("reset-btn").addEventListener("click", resetGame);
+document.getElementById("game-video").addEventListener("ended", afterVideo);
 
-    get currTyres() {
-        return this._currTyres;
-    }
+const tyreBtnArray = document.querySelectorAll(".tyre-btn");
+tyreBtnArray.forEach(tyreBtn => {
+    tyreBtn.addEventListener("click", getTyrePenalty);
+});
 
-    get weather() {
-        return this._weather;
-    }
-
-    get tyreLife() {
-        return this._tyreLife;
-    }
-
-    get correctTyre() {
-        return this._correctTyre;
-    }
-
-    get superBadTyre() {
-        return this._superBadTyre;
-    }
-}
-
-const scenario1 = new scenario(2, "dry", "rainy", "38%", "wet", "dry");
-const scenario2 = new scenario(22, "wet", "hot", "77%", "dry", "wet");
-const scenario3 = new scenario(15, "cold", "hot", "20%", "dry", "wet");
-const scenario4 = new scenario(17, "hot", "dry", "55%", "dry", "dry");
-const scenario5 = new scenario(40, "dry", "windy", "11%", "wet", "wet");
+const scenario1 = new scenario(2, "S", "Moderate Rain", [new tyre("W",22,5), new tyre("H",70,60), new tyre("M",70,60), new tyre("S",70,60), new tyre("I",44,0)]);
+const scenario2 = new scenario(20, "M", "Dry", [new tyre("W",2,60), new tyre("H",53,0), new tyre("M",24,20), new tyre("S",18,25), new tyre("I",5,60)]);
+const scenario3 = new scenario(65, "I", "Dry", [new tyre("W",2,60), new tyre("H",53,5), new tyre("M",24,3), new tyre("S",18,0), new tyre("I",5,60)]);
+const scenario4 = new scenario(44, "H", "Dry", [new tyre("W",2,60), new tyre("H",53,5), new tyre("M",24,0), new tyre("S",18,20), new tyre("I",5,60)]);
+const scenario5 = new scenario(37, "W", "Heavy Rain", [new tyre("W",40,0), new tyre("H",70,60), new tyre("M",70,60), new tyre("S",70,60), new tyre("I",70,25)]);
 
 const scenarioList = [scenario1, scenario2, scenario3, scenario4, scenario5];
 
 let previousIndex = null;
 
 function randomIndex() {
-    i = Math.floor(Math.random() * 5 );
+    const i = Math.floor(Math.random() * 5 );
     if ((i !== previousIndex)) {
         return i;
     } else if (i === 4 ) {
@@ -70,9 +49,6 @@ function updateScenarioRow(selectedScenario){
             case "weather-condition":
                 conditionValue = selectedScenario.weather;
                 break;
-            case "tyre-life-condition":
-                conditionValue = selectedScenario.tyreLife;
-                break;
             default:
                 conditionValue = "N/A";
         }
@@ -80,17 +56,48 @@ function updateScenarioRow(selectedScenario){
     });
 }
 
-function updateTyreOptions(){
-    //get correct tyre
-    //get two random tyres
+function getTyreSelection(scenarioTyres){
+    console.log(scenarioTyres);
+    scenarioTyres.forEach(tyre => {
+        console.log(tyre);
+        let selectedTyreBtn;
+        switch (tyre.name) {
+            case "W":
+                selectedTyreBtn = document.getElementById("tyre-w");
+                selectedTyreBtn.dataset.penalty = tyre.penalty;
+                selectedTyreBtn.querySelector(".laps-given").innerHTML = tyre.laps;
+                break;
+            case "H":
+                selectedTyreBtn = document.getElementById("tyre-h");
+                selectedTyreBtn.dataset.penalty = tyre.penalty;
+                selectedTyreBtn.querySelector(".laps-given").innerHTML = tyre.laps;
+                break;
+            case "M":
+                selectedTyreBtn = document.getElementById("tyre-m");
+                selectedTyreBtn.dataset.penalty = tyre.penalty;
+                selectedTyreBtn.querySelector(".laps-given").innerHTML = tyre.laps;
+                break;
+            case "S":
+                selectedTyreBtn = document.getElementById("tyre-s");
+                selectedTyreBtn.dataset.penalty = tyre.penalty;
+                selectedTyreBtn.querySelector(".laps-given").innerHTML = tyre.laps;
+                break;
+            case "I":
+                selectedTyreBtn = document.getElementById("tyre-i");
+                selectedTyreBtn.dataset.penalty = tyre.penalty;
+                selectedTyreBtn.querySelector(".laps-given").innerHTML = tyre.laps;
+                break;
+            default:
+                break;
+        }
+    });
 }
 
 function startGame(){
    const i = randomIndex();
    previousIndex = i;
    updateScenarioRow(scenarioList[i]);
-   updateTyreOptions();
-   //move to video section
+   getTyreSelection(scenarioList[i].tyres);
 }
 
 function playVideo(){
@@ -116,6 +123,17 @@ function playVideo(){
     observer.observe(video);
 }
 
+function afterVideo(){
+    document.getElementById("tyre-selection-section").scrollIntoView({behavior: "smooth", block: "start"});
+}
+
+let penaltyMS;
+
+function getTyrePenalty(){
+    penaltyMS = this.dataset.penalty * 1000;
+    document.getElementById("tyre-penalty").children[1].children[0].innerHTML = msToDisplayTime(penaltyMS);
+}
+
 playVideo();
 
 let startTime;
@@ -133,9 +151,11 @@ function startTimer(){
 }
 
 function stopTimer(){
-    finalTime = document.getElementById("game-timer").innerHTML;
     clearInterval(timerInterval);
     timerInterval = null;
+
+    const totalTimeMs = finalTimeMs + penaltyMS;
+    document.getElementById("total-time").children[1].innerHTML = msToDisplayTime(totalTimeMs);
 
     document.getElementById("stop-timer-btn").classList.remove('active');
     document.getElementById("stop-timer-btn").classList.add('hidden');
@@ -173,3 +193,13 @@ function padMs(number){
     }
 }
 
+function resetGame(){
+    const resetScenario = new scenario("N/A", "N/A", "N/A", [new tyre("W","N/A",0), new tyre("H","N/A",0), new tyre("M","N/A",0), new tyre("S","N/A",0), new tyre("I","N/A",0)]);
+    updateScenarioRow(resetScenario);
+    getTyreSelection(resetScenario.tyres);
+    document.getElementById("game-timer").innerHTML = msToDisplayTime(0);
+    document.getElementById("pit-time").children[1].innerHTML = msToDisplayTime(0);
+    document.getElementById("tyre-penalty").children[1].children[0].innerHTML = msToDisplayTime(0);
+    document.getElementById("total-time").children[1].innerHTML = msToDisplayTime(0);
+    scroll(0,0);
+}
