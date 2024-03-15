@@ -2,6 +2,7 @@ html {
     scroll-snap-type: y mandatory;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
+    scroll-behavior: smooth;
 }
 
 /**
@@ -124,6 +125,18 @@ button,
     cursor: pointer;
 }
 
+.tyre-btn {
+    height: 150px;
+    width: 150px;
+    border-radius: 100px;
+    font-size: var(--medium-font-size);
+    color: var(--light);
+    border: 10px solid var(--blue);
+    padding: 10px;
+    background-color: var(--dark);
+    
+}
+
 /**
 * Elements
 **/
@@ -229,6 +242,14 @@ section p {
     font-size: var(--medium-font-size);
     font-weight: 600;
     margin-bottom: 0;
+}
+
+#tyre-selction-row {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2em;
 }
 
 /** Time Section **/
