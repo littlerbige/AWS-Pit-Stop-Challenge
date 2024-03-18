@@ -202,5 +202,9 @@ function resetGame(){
     document.getElementById("pit-time").children[1].innerHTML = msToDisplayTime(0);
     document.getElementById("tyre-penalty").children[1].children[0].innerHTML = msToDisplayTime(0);
     document.getElementById("total-time").children[1].innerHTML = msToDisplayTime(0);
+
+    document.getElementById("finish-timer-btn").classList.add('hidden');
+    document.getElementById("start-timer-btn").classList.remove('hidden');
+    document.getElementById("start-timer-btn").classList.add('active');
     scroll(0,0);
 }
