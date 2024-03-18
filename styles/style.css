@@ -126,15 +126,30 @@ button,
 }
 
 .tyre-btn {
-    height: 150px;
-    width: 150px;
+    height: 165px;
+    width: 165px;
     border-radius: 100px;
     font-size: var(--medium-font-size);
     color: var(--light);
-    border: 10px solid var(--blue);
+    border: 15px solid var(--dark);
     padding: 10px;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    background-color: transparent;
+}
+.tyre-btn:hover{
+    border: 15px solid var(--accent-2);
+}
+.tyre-btn > span {
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    width: 150px;
+    height: 150px;
+    border-radius: 100px;
+    border: 5px solid var(--light);
     background-color: var(--dark);
-    
 }
 
 /**
