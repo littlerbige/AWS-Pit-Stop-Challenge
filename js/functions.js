@@ -104,7 +104,7 @@ function playVideo(){
     const video = document.getElementById("game-video");
     const options = {
         rootMargin: "0px",
-        threshold: 1.0,
+        threshold: 0.9,
     };
     const callback = (entries) => {
         const videoEntry = entries[0];
@@ -116,15 +116,23 @@ function playVideo(){
         } else {
             videoEntry.target.play();
         }
+        console.log(videoEntry);
+        if(!videoEntry.target.paused){
+            document.querySelector('header').classList.add('hidden');
+        } else {
+            document.querySelector('header').classList.remove('hidden');
+        }
     }
     
     const observer = new IntersectionObserver(callback, options);
     
     observer.observe(video);
 }
+playVideo();
 
 function afterVideo(){
     document.getElementById("tyre-selection-section").scrollIntoView({behavior: "smooth", block: "start"});
+    // document.querySelector('header').classList.remove('hidden');
 }
 
 let penaltyMS;
@@ -134,8 +142,6 @@ function getTyrePenalty(){
     document.getElementById("tyre-penalty").children[1].children[0].innerHTML = msToDisplayTime(penaltyMS);
     document.getElementById("time-section").scrollIntoView({behavior: "smooth", block: "start"});
 }
-
-playVideo();
 
 let startTime;
 let timerInterval;
