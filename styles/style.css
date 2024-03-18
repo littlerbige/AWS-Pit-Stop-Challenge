@@ -182,6 +182,12 @@ header img {
     border: 1px solid var(--light);
 }
 
+body {
+    background-image: url(../assets/imgs/section-bg.png);
+    background-attachment: fixed;
+    background-position: bottom center;
+}
+
 section {
     height: 100svh;
     width: 100%;
@@ -189,8 +195,6 @@ section {
     aspect-ratio: 16/9;
     scroll-snap-align: start;
     scroll-snap-stop: always;
-    background-image: url(../assets/imgs/section-bg.png);
-    background-position: bottom center;
 }
 
 section h1,
