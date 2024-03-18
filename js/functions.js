@@ -132,6 +132,7 @@ let penaltyMS;
 function getTyrePenalty(){
     penaltyMS = this.dataset.penalty * 1000;
     document.getElementById("tyre-penalty").children[1].children[0].innerHTML = msToDisplayTime(penaltyMS);
+    document.getElementById("time-section").scrollIntoView({behavior: "smooth", block: "start"});
 }
 
 playVideo();
