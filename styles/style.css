@@ -125,6 +125,11 @@ button,
     cursor: pointer;
 }
 
+button:disabled {
+    background-color: var(--grey);
+    cursor: not-allowed;
+}
+
 .tyre-btn {
     height: 165px;
     width: 165px;
@@ -138,7 +143,8 @@ button,
     justify-content: center;
     background-color: transparent;
 }
-.tyre-btn:hover{
+.tyre-btn:hover,
+.tyre-btn.selected {
     border: 15px solid var(--accent-2);
 }
 .tyre-btn > span {
@@ -245,7 +251,7 @@ section p {
     display: flex;
     flex-flow: column;
     gap: 2rem;
-    margin: 5rem 0;
+    margin: 2rem 0;
 }
 
 .scenario-condition-value-wrapper {
@@ -269,6 +275,7 @@ section p {
     align-items: center;
     justify-content: space-between;
     gap: 2em;
+    margin-bottom: 2rem;
 }
 
 /** Time Section **/
