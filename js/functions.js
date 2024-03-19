@@ -6,6 +6,7 @@ document.getElementById("start-timer-btn").addEventListener("click", startTimer)
 document.getElementById("stop-timer-btn").addEventListener("click", stopTimer);
 document.getElementById("reset-btn").addEventListener("click", resetGame);
 document.getElementById("game-video").addEventListener("ended", afterVideo);
+document.getElementById("tyre-submit-btn").addEventListener("click", submitTyreSelection);
 
 const tyreBtnArray = document.querySelectorAll(".tyre-btn");
 tyreBtnArray.forEach(tyreBtn => {
@@ -139,7 +140,16 @@ let penaltyMS;
 
 function getTyrePenalty(){
     penaltyMS = this.dataset.penalty * 1000;
+    const currentSeleccted = document.querySelector(".selected")
+    if(currentSeleccted){
+        currentSeleccted.classList.remove("selected");
+    }
+    this.classList.add("selected");
+    document.getElementById("tyre-submit-btn").disabled = false;
     document.getElementById("tyre-penalty").children[1].children[0].innerHTML = msToDisplayTime(penaltyMS);
+}
+
+function submitTyreSelection(){
     document.getElementById("time-section").scrollIntoView({behavior: "smooth", block: "start"});
 }
 
