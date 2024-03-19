@@ -21,16 +21,20 @@ const scenario5 = new scenario(37, "W", "Heavy Rain", [new tyre("W",40,0), new t
 
 const scenarioList = [scenario1, scenario2, scenario3, scenario4, scenario5];
 
-let previousIndex = null;
+let previousIndex = 0;
 
 function randomIndex() {
-    const i = Math.floor(Math.random() * 5 );
+    // const i = Math.floor(Math.random() * 5 );
+    const i = 0;
+    console.log("random index:", i);
     if ((i !== previousIndex)) {
         return i;
-    } else if (i === 4 ) {
+    } else if (i == 4 ) {
         return 3;
-    } else if ( i === 0 ){
+    } else if ( i == 0 ){
         return 1;
+    } else {
+        return i - 1;
     }
 }
 
@@ -42,7 +46,6 @@ function updateScenarioRow(selectedScenario){
         switch (id) {
             case 'lap-number-condition':
                 conditionValue = selectedScenario.lapNum;
-                console.log(conditionValue);
                 break;
             case "current-tyres-condition":
                 conditionValue = selectedScenario.currTyres;
@@ -58,9 +61,7 @@ function updateScenarioRow(selectedScenario){
 }
 
 function getTyreSelection(scenarioTyres){
-    console.log(scenarioTyres);
     scenarioTyres.forEach(tyre => {
-        console.log(tyre);
         let selectedTyreBtn;
         switch (tyre.name) {
             case "W":
@@ -96,9 +97,13 @@ function getTyreSelection(scenarioTyres){
 
 function startGame(){
    const i = randomIndex();
+   console.log("previous index:", previousIndex);
+   console.log("index:", i);
    previousIndex = i;
+   
    updateScenarioRow(scenarioList[i]);
    getTyreSelection(scenarioList[i].tyres);
+   console.log(scenarioList[i]);
 }
 
 function playVideo(){
@@ -117,7 +122,6 @@ function playVideo(){
         } else {
             videoEntry.target.play();
         }
-        console.log(videoEntry);
         if(!videoEntry.target.paused){
             document.querySelector('header').classList.add('hidden');
         } else {
@@ -222,5 +226,6 @@ function resetGame(){
     document.getElementById("finish-timer-btn").classList.add('hidden');
     document.getElementById("start-timer-btn").classList.remove('hidden');
     document.getElementById("start-timer-btn").classList.add('active');
+    document.querySelector(".selected").classList.remove('selected');
     scroll(0,0);
 }
