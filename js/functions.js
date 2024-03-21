@@ -13,11 +13,11 @@ tyreBtnArray.forEach(tyreBtn => {
     tyreBtn.addEventListener("click", getTyrePenalty);
 });
 
-const scenario1 = new scenario(2, "S", "Moderate Rain", [new tyre("W",22,5), new tyre("H",70,60), new tyre("M",70,60), new tyre("S",70,60), new tyre("I",44,0)]);
-const scenario2 = new scenario(20, "M", "Dry", [new tyre("W",2,60), new tyre("H",53,0), new tyre("M",24,20), new tyre("S",18,25), new tyre("I",5,60)]);
-const scenario3 = new scenario(65, "I", "Dry", [new tyre("W",2,60), new tyre("H",53,5), new tyre("M",24,3), new tyre("S",18,0), new tyre("I",5,60)]);
-const scenario4 = new scenario(44, "H", "Dry", [new tyre("W",2,60), new tyre("H",53,5), new tyre("M",24,0), new tyre("S",18,20), new tyre("I",5,60)]);
-const scenario5 = new scenario(37, "W", "Heavy Rain", [new tyre("W",40,0), new tyre("H",70,60), new tyre("M",70,60), new tyre("S",70,60), new tyre("I",70,25)]);
+const scenario1 = new scenario(2, "Soft", "Moderate Rain", [new tyre("W",22,5), new tyre("H",70,60), new tyre("M",70,60), new tyre("S",70,60), new tyre("I",44,0)]);
+const scenario2 = new scenario(20, "Medium", "Dry", [new tyre("W",2,60), new tyre("H",53,0), new tyre("M",24,20), new tyre("S",18,25), new tyre("I",5,60)]);
+const scenario3 = new scenario(65, "Inter", "Dry", [new tyre("W",2,60), new tyre("H",53,5), new tyre("M",24,3), new tyre("S",18,0), new tyre("I",5,60)]);
+const scenario4 = new scenario(44, "Hard", "Dry", [new tyre("W",2,60), new tyre("H",53,5), new tyre("M",24,0), new tyre("S",18,20), new tyre("I",5,60)]);
+const scenario5 = new scenario(37, "Wet", "Heavy Rain", [new tyre("W",40,0), new tyre("H",70,60), new tyre("M",70,60), new tyre("S",70,60), new tyre("I",70,25)]);
 
 const scenarioList = [scenario1, scenario2, scenario3, scenario4, scenario5];
 
@@ -52,6 +52,21 @@ function updateScenarioRow(selectedScenario){
                 break;
             case "weather-condition":
                 conditionValue = selectedScenario.weather;
+                const weatherIcons = document.querySelectorAll('.weather-icon');
+                weatherIcons.forEach(icon =>{
+                    icon.classList.add('hidden');
+                });
+                switch(conditionValue) {
+                    case 'Dry':
+                        document.getElementById("dry-weather-icon").classList.remove("hidden");
+                        break;
+                    case 'Moderate Rain':
+                        document.getElementById("moderate-rain-weather-icon").classList.remove("hidden");
+                        break;
+                    case 'Heavy Rain':
+                        document.getElementById("heavy-rain-weather-icon").classList.remove("hidden");
+                        break;
+                }
                 break;
             default:
                 conditionValue = "N/A";
@@ -67,27 +82,27 @@ function getTyreSelection(scenarioTyres){
             case "W":
                 selectedTyreBtn = document.getElementById("tyre-w");
                 selectedTyreBtn.dataset.penalty = tyre.penalty;
-                selectedTyreBtn.querySelector(".laps-given").innerHTML = tyre.laps;
+                selectedTyreBtn.querySelector(".laps-given").innerHTML = tyre.laps  + " Laps";
                 break;
             case "H":
                 selectedTyreBtn = document.getElementById("tyre-h");
                 selectedTyreBtn.dataset.penalty = tyre.penalty;
-                selectedTyreBtn.querySelector(".laps-given").innerHTML = tyre.laps;
+                selectedTyreBtn.querySelector(".laps-given").innerHTML = tyre.laps  + " Laps";
                 break;
             case "M":
                 selectedTyreBtn = document.getElementById("tyre-m");
                 selectedTyreBtn.dataset.penalty = tyre.penalty;
-                selectedTyreBtn.querySelector(".laps-given").innerHTML = tyre.laps;
+                selectedTyreBtn.querySelector(".laps-given").innerHTML = tyre.laps  + " Laps";
                 break;
             case "S":
                 selectedTyreBtn = document.getElementById("tyre-s");
                 selectedTyreBtn.dataset.penalty = tyre.penalty;
-                selectedTyreBtn.querySelector(".laps-given").innerHTML = tyre.laps;
+                selectedTyreBtn.querySelector(".laps-given").innerHTML = tyre.laps  + " Laps";
                 break;
             case "I":
                 selectedTyreBtn = document.getElementById("tyre-i");
                 selectedTyreBtn.dataset.penalty = tyre.penalty;
-                selectedTyreBtn.querySelector(".laps-given").innerHTML = tyre.laps;
+                selectedTyreBtn.querySelector(".laps-given").innerHTML = tyre.laps + " Laps";
                 break;
             default:
                 break;
@@ -227,5 +242,6 @@ function resetGame(){
     document.getElementById("start-timer-btn").classList.remove('hidden');
     document.getElementById("start-timer-btn").classList.add('active');
     document.querySelector(".selected").classList.remove('selected');
+    document.getElementById('tyre-submit-btn').disabled = true;
     scroll(0,0);
 }
