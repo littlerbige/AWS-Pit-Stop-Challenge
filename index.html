@@ -21,38 +21,54 @@
         </section>
         <section id="video-section">
             <div>
-                <video id="game-video" src="assets/videos/Cold-Bg.webm"></video>
+                <video id="game-video" src="assets/videos/intro.mp4"></video>
             </div>
         </section>
         <section id="tyre-selection-section">
             <div class="inner-container">
                 <h2>Tyre Selection</h2>
+                <p>Choose a tyre to match the conditions. Be careful an incorrect selection will result in a penalty.</p>
                 <div id="scenario-row">
                     <div class="scenario-condition-wrapper" id="lap-number-condition">
                         <div class="scenario-condition-value-wrapper">
-                            <p class="scenario-condition-value">N/A</p>
+                            <p class="scenario-condition-description">LAP: <span class="scenario-condition-value">N/A</span> <span>/</span> 70</p>
                         </div>
-                        <p class="scenario-condition-description">Lap Number</p>
                     </div>
                     <div class="scenario-condition-wrapper" id="current-tyres-condition">
                         <div class="scenario-condition-value-wrapper">
-                            <p class="scenario-condition-value">N/A</p>
+                            <p class="scenario-condition-description">TYRES: <span class="scenario-condition-value">N/A</span></p>
                         </div>
-                        <p class="scenario-condition-description">Current Tyres</p>
                     </div>
                     <div class="scenario-condition-wrapper" id="weather-condition">
                         <div class="scenario-condition-value-wrapper">
-                            <p class="scenario-condition-value">N/A</p>
+                            <p class="scenario-condition-description">WEATHER: <span class="scenario-condition-value">N/A</span></p>
+                            <svg id="dry-weather-icon" class="hidden weather-icon" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="Layer_1" x="0" y="0" style="enable-background:new 0 0 22 22" version="1.1" viewBox="0 0 22 22">
+                                <style>
+                                  .st0{fill:#85c441}
+                                </style>
+                                <path d="M11 5c-3.3 0-6 2.7-6 6s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6zm0 2c2.2 0 4 1.8 4 4s-1.8 4-4 4-4-1.8-4-4 1.8-4 4-4zM4.6 6.1c.2.2.4.3.7.3h.3c.3-.1.6-.4.7-.8.1-.3 0-.7-.3-1L4.6 3.3c-.4-.4-1-.4-1.4 0-.4.4-.4 1 0 1.4l1.4 1.4zM16.6 6.4c.3 0 .5-.1.7-.3l1.4-1.4c.4-.4.4-1 0-1.4-.4-.4-1-.4-1.4 0l-1.4 1.4c-.4.4-.4 1 0 1.4.2.1.5.3.7.3zM4 11c0-.6-.4-1-1-1H1c-.6 0-1 .4-1 1s.4 1 1 1h2c.6 0 1-.4 1-1zM11 4c.6 0 1-.4 1-1V1c0-.6-.4-1-1-1s-1 .4-1 1v2c0 .6.5 1 1 1zM4.7 16l-1.4 1.4c-.3.2-.4.6-.3.9.1.4.4.7.7.7H4c.3 0 .5-.1.7-.3l1.4-1.4c.4-.4.4-1 0-1.4-.4-.4-1-.4-1.4.1zM17.4 15.9c-.2-.2-.5-.3-.8-.3-.2 0-.5.1-.7.3s-.3.4-.3.7c0 .3.1.5.3.8l1.4 1.4c.2.2.5.3.7.3.3 0 .5-.1.7-.3.4-.4.4-1 0-1.4l-1.3-1.5zM21 10h-2c-.6 0-1 .4-1 1s.4 1 1 1h2c.6 0 1-.4 1-1s-.4-1-1-1zM11 18c-.6 0-1 .4-1 1v2c0 .6.4 1 1 1s1-.4 1-1v-2c0-.6-.4-1-1-1z" class="st0"/>
+                              </svg>
+                              <svg id="heavy-rain-weather-icon" class="hidden weather-icon" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="Layer_1" x="0" y="0" style="enable-background:new 0 0 22 21" version="1.1" viewBox="0 0 22 21">
+                                <style>
+                                  .st0{fill:#85c441}
+                                </style>
+                                <path d="M16.8 3.3c-.3 0-.7 0-1 .1C14.5 1.3 12.3 0 9.9 0 6.4 0 3.4 2.9 3.2 6.6 1.4 6.8 0 8.4 0 10.3c0 2 1.6 3.7 3.6 3.7h13.2c2.9 0 5.2-2.4 5.2-5.4s-2.3-5.3-5.2-5.3zM3.6 8.5h.6c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7V7c0-2.8 2.1-5 4.8-5 1.9 0 3.6 1.2 4.4 3 .2.5.8.7 1.3.5.4-.2.8-.2 1.2-.2 1.8 0 3.2 1.5 3.2 3.4s-1.4 3.4-3.2 3.4H3.6C2.7 12 2 11.2 2 10.3c0-1 .7-1.8 1.6-1.8zM9.4 15.1c-.2-.1-.5-.1-.7 0-.3.1-.5.3-.6.5l-2 4c-.1.2-.1.5-.1.7s.3.5.5.6c.2.1.3.1.5.1.1 0 .2 0 .3-.1.3-.1.5-.3.6-.5l2-4c.1-.2.1-.5.1-.8s-.3-.4-.6-.5zM17.4 15.1c-.2-.1-.5-.1-.8-.1-.3.1-.5.3-.6.5l-2 4v.8c0 .2.3.5.5.6.2.1.3.1.5.1.1 0 .2 0 .3-.1.3-.1.5-.3.6-.5l2-4c.1-.2.1-.5.1-.8s-.3-.4-.6-.5zM5.4 15.1c-.2-.1-.5-.1-.7 0-.3.1-.5.3-.6.5l-1 2c-.1.2-.1.5-.1.7s.3.5.5.6c.2.1.3.1.5.1.1 0 .2 0 .3-.1.3-.1.5-.3.6-.5l1-2c.1-.2.1-.5 0-.7s-.2-.5-.5-.6zM13.4 15.1c-.2-.1-.5-.1-.8-.1-.3.1-.5.3-.6.5l-1 2v.8c0 .2.3.5.5.6.2.1.3.1.5.1.1 0 .2 0 .3-.1.3-.1.5-.3.6-.5l1-2c.1-.2.1-.5.1-.8s-.3-.4-.6-.5z" class="st0"/>
+                              </svg>
+                              <svg id="moderate-rain-weather-icon" class="hidden weather-icon" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="Layer_1" x="0" y="0" style="enable-background:new 0 0 22 19.1" version="1.1" viewBox="0 0 22 19.1">
+                                <style>
+                                  .st0{fill:#85c441}
+                                </style>
+                                <path d="M16.8 3.3c-.3 0-.7 0-1 .1C14.5 1.3 12.3 0 9.9 0 6.4 0 3.4 2.9 3.2 6.6 1.4 6.8 0 8.4 0 10.3c0 2 1.6 3.7 3.6 3.7h13.2c2.9 0 5.2-2.4 5.2-5.4s-2.3-5.3-5.2-5.3zM3.6 8.5h.6c.3 0 .5-.1.7-.3s.3-.5.3-.8v-.5c0-2.8 2.1-5 4.8-5 1.9 0 3.6 1.2 4.4 3 .2.5.8.7 1.3.5.4-.2.8-.2 1.2-.2 1.8 0 3.2 1.5 3.2 3.4S18.6 12 16.8 12H3.6c-.9 0-1.6-.8-1.6-1.7 0-1 .7-1.8 1.6-1.8zM5 15c-.6 0-1 .4-1 1v1.1c0 .6.4 1 1 1s1-.4 1-1V16c0-.6-.4-1-1-1zM17 16c-.6 0-1 .4-1 1v1.1c0 .6.4 1 1 1s1-.4 1-1V17c0-.6-.4-1-1-1zM13 15c-.6 0-1 .4-1 1v1.1c0 .6.4 1 1 1s1-.4 1-1V16c0-.6-.4-1-1-1zM9 16c-.6 0-1 .4-1 1v1.1c0 .6.4 1 1 1s1-.4 1-1V17c0-.6-.4-1-1-1z" class="st0"/>
+                              </svg>
                         </div>
-                        <p class="scenario-condition-description">Weather</p>
                     </div>
                 </div>
                 <div id="tyre-selction-row">
-                    <button type="button" aria-label="Tyre Option H" class="tyre-btn" id="tyre-h" data-penalty="0"><span>Tyre H <br>Laps <span class="laps-given">N/A</span></span></button>
-                    <button type="button" aria-label="Tyre Option W" class="tyre-btn" id="tyre-w" data-penalty="0"><span>Tyre W <br>Laps <span class="laps-given">N/A</span></span></button>
-                    <button type="button" aria-label="Tyre Option M" class="tyre-btn" id="tyre-m" data-penalty="0"><span>Tyre M <br>Laps <span class="laps-given">N/A</span></span></button>
-                    <button type="button" aria-label="Tyre Option S" class="tyre-btn" id="tyre-s" data-penalty="0"><span>Tyre S <br>Laps <span class="laps-given">N/A</span></span></button>
-                    <button type="button" aria-label="Tyre Option I" class="tyre-btn" id="tyre-i" data-penalty="0"><span>Tyre I <br>Laps <span class="laps-given">N/A</span></span></button>
+                    <button type="button" aria-label="Tyre Option S" class="tyre-btn" id="tyre-s" data-penalty="0"><span>Soft <br>Tyre Life: <span class="laps-given">N/A Laps</span></span></button>
+                    <button type="button" aria-label="Tyre Option M" class="tyre-btn" id="tyre-m" data-penalty="0"><span>Medium <br>Tyre Life: <span class="laps-given">N/A Laps</span></span></button>
+                    <button type="button" aria-label="Tyre Option H" class="tyre-btn" id="tyre-h" data-penalty="0"><span>Hard <br>Tyre Life: <span class="laps-given">N/A Laps</span></span></button>
+                    <button type="button" aria-label="Tyre Option I" class="tyre-btn" id="tyre-i" data-penalty="0"><span>Inter. <br>Tyre Life: <span class="laps-given">N/A Laps</span></span></button>
+                    <button type="button" aria-label="Tyre Option W" class="tyre-btn" id="tyre-w" data-penalty="0"><span>Wet <br>Tyre Life: <span class="laps-given">N/A Laps</span></span></button>
                 </div>
                 <div><button type="button" aria-label="Submit tyre selection" id="tyre-submit-btn" disabled>Submit</button></div>
             </div>
