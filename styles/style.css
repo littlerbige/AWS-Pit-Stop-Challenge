@@ -101,10 +101,10 @@ h6 {
     font-weight: 600;
 }
 
-p {
+/* p {
     font-size: var(--normal-font-size);
     font-weight: 400;
-}
+} */
 
 /**
 * Buttons
@@ -143,9 +143,61 @@ button:disabled {
     justify-content: center;
     background-color: transparent;
 }
+
+#tyre-h {
+    --color-h: 0;
+    --color-s: 0%;
+    --color-l: 100%;
+}
+#tyre-w {
+    --color-h: 207;
+    --color-s: 100%;
+    --color-l: 38%;
+}
+#tyre-m {
+    --color-h: 53;
+    --color-s: 100%;
+    --color-l: 43%;
+}
+#tyre-s {
+    --color-h: 355;
+    --color-s: 100%;
+    --color-l: 50%;
+}
+#tyre-i {
+    --color-h: 120;
+    --color-s: 100%;
+    --color-l: 32%;
+}
+#tyre-h.tyre-btn > span,
+#tyre-w.tyre-btn > span,
+#tyre-m.tyre-btn > span,
+#tyre-s.tyre-btn > span,
+#tyre-i.tyre-btn > span{
+    border: 5px solid hsl(
+        var(--color-h), 
+        var(--color-s), 
+        var(--color-l)
+    );
+}
+
+/* .tyre-btn:hover > span{
+    border: 5px solid hsl(
+        var(--color-h), 
+        var(--color-s), 
+        calc(var(--color-l)*0.5)
+    ) !important;
+} */
+
 .tyre-btn:hover,
-.tyre-btn.selected {
-    border: 15px solid var(--accent-2);
+.tyre-btn.selected,
+.tyre-btn:hover > span,
+.tyre-btn.selected > span {
+    border: 10px solid hsl(
+        var(--color-h), 
+        var(--color-s), 
+        calc(var(--color-l)*0.5)
+    ) !important;
 }
 .tyre-btn > span {
     display: grid;
@@ -154,9 +206,10 @@ button:disabled {
     width: 150px;
     height: 150px;
     border-radius: 100px;
-    border: 5px solid var(--light);
     background-color: var(--dark);
 }
+
+
 
 /**
 * Elements
@@ -241,6 +294,10 @@ section p {
 
 /** Tyre Selection **/
 
+#tyre-selection-section .inner-container > p {
+    font-size: var(--medium-font-size);
+}
+
 #scenario-row {
     display: flex;
     flex-flow: row nowrap;
@@ -254,7 +311,7 @@ section p {
     margin: 2rem 0;
 }
 
-.scenario-condition-value-wrapper {
+/* .scenario-condition-value-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -262,11 +319,23 @@ section p {
     width: 150px;
     border: 2px solid var(--accent-2);
     border-radius: 999px;
-}
-.scenario-condition-value-wrapper p {
-    font-size: var(--medium-font-size);
+} */
+.scenario-condition-value-wrapper {
+    font-size: var(--xlarge-font-size) !important;
     font-weight: 600;
-    margin-bottom: 0;
+}
+
+#weather-condition .scenario-condition-value-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 0.25fr;
+    column-gap: 0.5em;
+}
+#weather-condition .scenario-condition-value-wrapper svg {
+    width: 1.2em;
+}
+
+.scenario-condition-description span:nth-child(2) {
+    color: var(--accent-2);
 }
 
 #tyre-selction-row {
