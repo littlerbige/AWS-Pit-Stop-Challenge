@@ -24,8 +24,7 @@ const scenarioList = [scenario1, scenario2, scenario3, scenario4, scenario5];
 let previousIndex = 0;
 
 function randomIndex() {
-    // const i = Math.floor(Math.random() * 5 );
-    const i = 0;
+    const i = Math.floor(Math.random() * 5 );
     console.log("random index:", i);
     if ((i !== previousIndex)) {
         return i;
@@ -164,6 +163,11 @@ function getTyrePenalty(){
         currentSeleccted.classList.remove("selected");
     }
     this.classList.add("selected");
+    if(this.dataset.penalty != 0){
+        document.getElementById("incorrect-message-container").classList.remove('hidden');
+    } else {
+        document.getElementById("incorrect-message-container").classList.add('hidden');
+    }
     document.getElementById("tyre-submit-btn").disabled = false;
     document.getElementById("tyre-penalty").children[1].children[0].innerHTML = msToDisplayTime(penaltyMS);
 }
@@ -243,5 +247,6 @@ function resetGame(){
     document.getElementById("start-timer-btn").classList.add('active');
     document.querySelector(".selected").classList.remove('selected');
     document.getElementById('tyre-submit-btn').disabled = true;
+    document.getElementById("incorrect-message-container").classList.add('hidden');
     scroll(0,0);
 }
