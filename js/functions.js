@@ -13,11 +13,11 @@ tyreBtnArray.forEach(tyreBtn => {
     tyreBtn.addEventListener("click", getTyrePenalty);
 });
 
-const scenario1 = new scenario(2, "Soft", "Moderate Rain", [new tyre("W",22,5), new tyre("H",70,60), new tyre("M",70,60), new tyre("S",70,60), new tyre("I",44,0)]);
-const scenario2 = new scenario(20, "Medium", "Dry", [new tyre("W",2,60), new tyre("H",53,0), new tyre("M",24,20), new tyre("S",18,25), new tyre("I",5,60)]);
-const scenario3 = new scenario(65, "Inter", "Dry", [new tyre("W",2,60), new tyre("H",53,5), new tyre("M",24,3), new tyre("S",18,0), new tyre("I",5,60)]);
-const scenario4 = new scenario(44, "Hard", "Dry", [new tyre("W",2,60), new tyre("H",53,5), new tyre("M",24,0), new tyre("S",18,20), new tyre("I",5,60)]);
-const scenario5 = new scenario(37, "Wet", "Heavy Rain", [new tyre("W",40,0), new tyre("H",70,60), new tyre("M",70,60), new tyre("S",70,60), new tyre("I",70,25)]);
+const scenario1 = new scenario(2, "Soft", "Moderate Rain", [new tyre("W",22,5), new tyre("H",70,60), new tyre("M",70,60), new tyre("S",70,60), new tyre("I",44,0)], '<p>Well done for choosing the right tyre! The intermediate is the safest choice in this situation. With moderate rain none of the slick tyres would yield any performance and putting the wet on would clear the water but is more than likely to be slower than the intermediate.</p>', '<p>The intermediate is the safest choice in this situation. With moderate rain none of the slick tyres would yield any performance and putting the wet on would clear the water but is more than likely to be slower than the intermediate.</p>');
+const scenario2 = new scenario(20, "Medium", "Dry", [new tyre("W",2,60), new tyre("H",53,0), new tyre("M",24,20), new tyre("S",18,25), new tyre("I",5,60)],'<p>Well done for choosing the right tyre! The Hard compound would be the optimum choice as it could get you to the end of the race without needing another stop.</p><p>The regulations also state you need to run two different tyre compounds throughout a dry race so it gives you the best strategy option over the course of the race depending on unforseen circumstances such as a safety car.</p>', '<p>The Hard compound would be the optimum choice as it could get you to the end of the race without needing another stop.</p><p>The regulations also state you need to run two different tyre compounds throughout a dry race so it gives you the best strategy option over the course of the race depending on unforseen circumstances such as a safety car.</p>');
+const scenario3 = new scenario(65, "Inter", "Dry", [new tyre("W",2,60), new tyre("H",53,5), new tyre("M",24,3), new tyre("S",18,0), new tyre("I",5,60)], '<p>Well done for choosing the right tyre! The soft is the optimum selction due to the weather being dry and only 5 laps remaining in the race. In this scenario you want the fastest tyre as durability is not an important factor with 5 laps remaining.</p>','<p>The regulations also state you need to run two different tyre compounds throughout a dry race so it gives you the best strategy option over the course of the race depending on unforseen circumstances such as a safety car.</p>');
+const scenario4 = new scenario(44, "Hard", "Dry", [new tyre("W",2,60), new tyre("H",53,5), new tyre("M",24,0), new tyre("S",18,20), new tyre("I",5,60)],'<p>Well done for choosing the right tyre! This was a tough decision and a bit of a gamble between the medium and the hard. The medium will yield the best performance for the last stint of the race but may drop off two laps to the end. We know the hard will go the distance but being the slower tyre it may not get you the win and in racing sometimes you just have to take a risk for the ultimate reward!</p>', '<p>This was a tough decision and a bit of a gamble between the medium and the hard. The medium will yield the best performance for the last stint of the race but may drop off two laps to the end. We know the hard will go the distance but being the slower tyre it may not get you the win and in racing sometimes you just have to take a risk for the ultimate reward!</p>');
+const scenario5 = new scenario(37, "Wet", "Heavy Rain", [new tyre("W",40,0), new tyre("H",70,60), new tyre("M",70,60), new tyre("S",70,60), new tyre("I",70,25)],"<p>Well done for choosing the right tyre! When it rains all slick tyres are off the table, the driver would have very little control over the car with no grooves cut into the tyres to disperse the standing water. With wet races, there isn't a need to run more than one compound and the intermediate although clear some water is not designed to clear a heavilly soaked track.</p>","When it rains all slick tyres are off the table, the driver would have very little control over the car with no grooves cut into the tyres to disperse the standing water. With wet races, there isn't a need to run more than one compound and the intermediate although clear some water is not designed to clear a heavilly soaked track.");
 
 const scenarioList = [scenario1, scenario2, scenario3, scenario4, scenario5];
 
@@ -164,10 +164,16 @@ function getTyrePenalty(){
     }
     this.classList.add("selected");
     if(this.dataset.penalty != 0){
-        document.getElementById("incorrect-message-container").classList.remove('hidden');
+        const message = scenarioList[previousIndex].incorrectMessage;
+        document.getElementById("message-container").innerHTML = message;
+        document.getElementById("message-container").dataset.answer = "incorrect";
     } else {
-        document.getElementById("incorrect-message-container").classList.add('hidden');
+        const message = scenarioList[previousIndex].correctMessage;
+        document.getElementById("message-container").innerHTML = message;
+        document.getElementById("message-container").dataset.answer = "correct";
+
     }
+    document.getElementById("message-container").classList.remove('hidden');
     document.getElementById("tyre-submit-btn").disabled = false;
     document.getElementById("tyre-penalty").children[1].children[0].innerHTML = msToDisplayTime(penaltyMS);
 }
@@ -247,6 +253,7 @@ function resetGame(){
     document.getElementById("start-timer-btn").classList.add('active');
     document.querySelector(".selected").classList.remove('selected');
     document.getElementById('tyre-submit-btn').disabled = true;
-    document.getElementById("incorrect-message-container").classList.add('hidden');
+    document.getElementById("message-container").classList.add('hidden');
+    document.getElementById("message-container").dataset.answer ='incorrect';
     scroll(0,0);
 }
