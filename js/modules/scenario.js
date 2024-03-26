@@ -1,9 +1,11 @@
 export default class scenario {
-    constructor(lapNum, currTyres, weather, tyres) {
+    constructor(lapNum, currTyres, weather, tyres, correctMessage, incorrectMessage) {
         this._lapNum = lapNum;
         this._currTyres = currTyres;
         this._weather = weather;
         this._tyres = tyres;
+        this._correctMessage = correctMessage;
+        this._incorrectMessage = incorrectMessage;
     }
 
     get lapNum() {
@@ -20,6 +22,14 @@ export default class scenario {
 
     get tyres() {
         return this._tyres;
+    }
+
+    get correctMessage() {
+        return this._correctMessage;
+    }
+
+    get incorrectMessage() {
+        return this._incorrectMessage;
     }
 
     getTyreByName(name) { 
