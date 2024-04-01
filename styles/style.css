@@ -362,10 +362,19 @@ section p {
     left: 43%;
 }
 
-.tyre-btn.selected:not([data-penalty="0"])::before {
+.tyre-btn.selected::before {
+    color: hsl(
+            var(--color-h), 
+            var(--color-s), 
+            var(--color-l)
+        );
+}
+
+
+.tyre-btn.selected:disabled:not([data-penalty="0"]):before {
     color: var(--accent);
 }
-.tyre-btn.selected[data-penalty="0"]::before {
+.tyre-btn.selected[data-penalty="0"]:disabled:before {
     color: var(--accent-2);
 }
 #message-container {
