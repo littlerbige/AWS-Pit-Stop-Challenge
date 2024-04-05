@@ -228,11 +228,11 @@ header {
     display: flex;
     flex-flow: row;
     gap: 2rem;
-    padding: 1.5rem 2rem;
+    padding: 1rem;
 }
 
 header img {
-    height: 50px;
+    height: 150px;
     width: auto;
 }
 
@@ -431,4 +431,18 @@ section p {
     justify-content: space-evenly;
     margin: 5rem 0;
     width: 100%;
+}
+
+.watermark {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 100;
+    width: 100%;
+    padding: 1em;
+    font-size: 12px;
+    text-align: center;
+    color: rgba(255,255,255, 0.5);
+    pointer-events: none;
 }
